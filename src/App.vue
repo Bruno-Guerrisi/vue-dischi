@@ -29,7 +29,6 @@ export default {
 @import '@/style/globals';
 
   #app{
-    height: 100vh;
 
     header{
       background-color: #2e3a46;
@@ -39,6 +38,7 @@ export default {
       flex-direction: column;
       height: 100%;
       background-color: #1d2d3c;
+      padding-top: 50px;
     }
   }
 

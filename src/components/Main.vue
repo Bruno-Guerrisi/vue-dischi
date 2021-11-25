@@ -2,26 +2,33 @@
     <div class="my_container">
 
         <div class="container">
-            <ul>
+            <ul >
+                <!-- v-if="listDisc !== null" -->
                 <li class="col-6 col-md-4 col-lg-2" v-for="(element, i) in listDisc" :key="`element-${i}`">
 
-                    <img :src="element.poster" :alt="element.title">
-                    <h3>{{ element.title }}</h3>
-                    <span class="author">{{ element.author }}</span>
-                    <span class="date">{{ element.year }}</span>
-                    <span class="style">{{ element.genre }}</span>
-
+                    <Card   :url="element.poster"
+                            :title="element.title"
+                            :author="element.author"
+                            :date="element.year"
+                            :genre="element.genre"/>
                 </li>
             </ul>
+            <!-- <div v-else>
+
+            </div> -->
         </div>
     </div>
 </template>
 
 <script>
 import axios from 'axios';
+import Card from "@/components/Card.vue";
 
 export default {
     name : 'Main',
+    components: {
+        Card,
+    },
     data(){
         return{
             listDisc: null,
@@ -60,11 +67,11 @@ export default {
             ul{
                 display: flex;
                 flex-wrap: wrap;
+                justify-content: center;
                 list-style: none;
 
                 li{
-                    padding: 10px;
-                    background-color: #2e3a46;
+                    padding: 5px;
                     margin-bottom: 20px;
                 }
             }
