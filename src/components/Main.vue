@@ -1,10 +1,10 @@
 <template>
     <div class="my_container">
 
-        <div class="container">
-            <ul >
-                <!-- v-if="listDisc !== null" -->
-                <li class="col-6 col-md-4 col-lg-2" v-for="(element, i) in listDisc" :key="`element-${i}`">
+        <div v-if="listCard !== null" class="container ">
+            <ul>
+                
+                <li class="col-6 col-md-4 col-lg-2" v-for="(element, i) in listCard" :key="`element-${i}`">
 
                     <Card   :url="element.poster"
                             :title="element.title"
@@ -13,15 +13,17 @@
                             :genre="element.genre"/>
                 </li>
             </ul>
-            <!-- <div v-else>
+        </div>
 
-            </div> -->
+        <div v-else class="container loading">
+            <div class="loading-box"></div>
+            <span>Loading...</span>
         </div>
     </div>
 </template>
 
 <script>
-import axios from 'axios';
+/* import axios from 'axios'; */
 import Card from "@/components/Card.vue";
 
 export default {
@@ -29,7 +31,11 @@ export default {
     components: {
         Card,
     },
-    data(){
+    props: {
+
+        listCard: Array,
+    },
+    /* data(){
         return{
             listDisc: null,
         }
@@ -50,7 +56,7 @@ export default {
                 console.log(error);
             })
         }
-    }
+    } */
     
 }
 </script>
@@ -62,6 +68,35 @@ export default {
         flex-direction: column;
         flex-grow: 1;
         
+        div.container.loading{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            div.loading-box{
+                width: 50px;
+                height: 50px;
+                border: 3px solid white;
+                border-radius: 50%;
+                border-top: 3px solid transparent;
+                animation: rotate 1s linear infinite;
+
+                @keyframes rotate {
+                    0%{
+                        transform: rotate(0deg);
+                    }
+                    100%{
+                        transform: rotate(360deg);
+                    }
+                }
+            }
+
+            span{
+                color:white;
+                margin-top: 20px;
+                font-weight: bold;
+            }
+        }
 
         div.container{
             ul{
