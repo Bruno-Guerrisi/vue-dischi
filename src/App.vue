@@ -2,7 +2,7 @@
   <div id="app">
     
     <header>
-      <Header @selectSearch = 'musicGenres'/>
+      <Header @selectSearch = 'musicGenres' />
     </header>
 
     <main>
@@ -73,6 +73,9 @@ export default {
 @import '@/style/globals';
 
   #app{
+
+    min-height: 100vh;
+    background-color: #1d2d3c;
 
     header{
       background-color: #2e3a46;
