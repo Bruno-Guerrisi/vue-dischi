@@ -1,9 +1,9 @@
 <template>
 
     <div class="main-container">
-        <div class="image-container">
-            <img :src="url" :alt="title">
-        </div>
+
+        <img :src="url" :alt="title">
+
 
         <h3>{{ title }}</h3>
         <span class="author">{{ author }}</span>
@@ -38,8 +38,9 @@ props: {
         align-items: center;
         text-align: center;
 
-        .image-container{
+        img{
             height: 150px;
+            margin-bottom: 10px;
         }
 
         h3{
